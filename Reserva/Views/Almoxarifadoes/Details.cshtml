@@ -1,0 +1,35 @@
+﻿@model Reserva.Models.Almoxarifado
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Vizualizar</h2>
+
+<div>
+    <h4>Reserva</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Nome
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sigla)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sigla)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <button type="button" class="btn btn-adn" onclick='location.href="@Url.Action("Index")"'>Voltar</button>
+    <button type="button" class="btn btn-primary" onclick='location.href="@Url.Action( "Edit", new { id = Model.Id })"'>Editar</button>
+</p>

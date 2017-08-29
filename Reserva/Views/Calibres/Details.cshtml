@@ -1,0 +1,27 @@
+﻿@model Reserva.Models.Calibre
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Vizualizar</h2>
+
+<div>
+    <h4>Calibre</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <label class="control-label col-md-2">Tamanho</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <button type="button" class="btn btn-adn" onclick='location.href="@Url.Action("Index")"'>Voltar</button>
+    <button type="button" class="btn btn-primary" onclick='location.href="@Url.Action( "Edit", new { id = Model.Id })"'>Editar</button>
+</p>

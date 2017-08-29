@@ -1,0 +1,75 @@
+﻿@model Reserva.Models.Municao
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Municao</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Almoxarifado.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Almoxarifado.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fabricante.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fabricante.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Disponivel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Disponivel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuantidadeBala)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuantidadeBala)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Calibre.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Calibre.Descricao)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Tombo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
