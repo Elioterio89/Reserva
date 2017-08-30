@@ -476,7 +476,6 @@ warning 6002: The table/view 'ReservaBD.dbo.Militars_Usuario' does not have a pr
           <Property Name="Tombo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Almoxarifado" Relationship="ReservaBDModel.AlmoxarifadoMaterial" FromRole="Material" ToRole="Almoxarifado" />
           <Property Name="AlmoxarifadoId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Cautela" Relationship="ReservaBDModel.MaterialCautela" FromRole="Material" ToRole="Cautela" />
           <Property Name="Disponivel" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Fabricante" Relationship="ReservaBDModel.FabricanteMaterial" FromRole="Material" ToRole="Fabricante" />
           <Property Name="FabricanteId" Type="Int32" Nullable="false" />
