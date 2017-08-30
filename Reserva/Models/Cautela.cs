@@ -17,17 +17,17 @@ namespace Reserva.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Cautela()
         {
-            this.Materiais = new HashSet<Material>();
+            this.Operacaos = new HashSet<Operacao>();
         }
     
         public int Id { get; set; }
         public System.DateTime Data { get; set; }
         public string NRegistro { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Material> Materiais { get; set; }
         public virtual Almoxarifado Almoxarifado { get; set; }
         public virtual Operador Operador { get; set; }
         public virtual Usuario Usuario { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Operacao> Operacaos { get; set; }
     }
 }

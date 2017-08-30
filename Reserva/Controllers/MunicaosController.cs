@@ -19,9 +19,16 @@ namespace Reserva.Controllers
         // GET: Municaos
         public async Task<ActionResult> Index()
         {
-            var municoes = db.Municoes.Include(m => m.Fabricante).Include(m => m.Calibre).DistinctBy(x=>x.Id);
-            
-            return View(municoes);
+            var municoes = db.Municoes.Include(m => m.Fabricante).Include(m => m.Calibre).DistinctBy(x => x.Lote);
+            List<Municao> lMunicoes = new List<Municao>();
+            foreach (Municao oMunicao in municoes.ToList())
+            {
+                oMunicao.Estoque = db.Municoes.Where(x => x.Lote == oMunicao.Lote).ToList().Count();
+
+                lMunicoes.Add(oMunicao);
+            }
+
+            return View(lMunicoes.Where(x=>x.AlmoxarifadoId==OperadorViewModel.USUARIO.AlmoxarifadoId));
         }
 
         // GET: Municaos/Details/5
@@ -31,7 +38,7 @@ namespace Reserva.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Municao municao = db.Municoes.Where(x=>x.Id==id).FirstOrDefault();
+            Municao municao = db.Municoes.Where(x => x.Id == id).FirstOrDefault();
 
             if (municao == null)
             {
@@ -54,40 +61,43 @@ namespace Reserva.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Tombo,AlmoxarifadoId,Disponivel,FabricanteId,Id,Descricao,CalibreId,QuantidadeBala")] Municao municao,FormCollection form)
+        public async Task<ActionResult> Create([Bind(Include = "Tombo,AlmoxarifadoId,Disponivel,FabricanteId,Id,Descricao,CalibreId,QuantidadeBala")] Municao municao, FormCollection form)
         {
-            int vId;
+            int vLote;
             if (ModelState.IsValid)
             {
                 if (db.Municoes.Count() > 0)
                 {
-                     vId = db.Municoes.OrderBy(x => x.Id).LastOrDefault().Id+1;
+                    List<Municao> oMun = db.Municoes.OrderBy(x => x.Lote).ToList();
+
+                    vLote = oMun.LastOrDefault().Lote + 1;
                 }
                 else
                 {
-                     vId = 1;
+                    vLote = 1;
                 }
 
-                for(int i= 1; i <= Convert.ToInt32(form["QtdMun"]); i++) { 
+                for (int i = 1; i <= Convert.ToInt32(form["QtdMun"]); i++)
+                {
 
-                Municao oMunicao = new Municao();
-                oMunicao.AlmoxarifadoId = OperadorViewModel.USUARIO.AlmoxarifadoId;
-                oMunicao.CalibreId = municao.CalibreId;
-                oMunicao.Descricao = municao.Descricao;
-                oMunicao.Disponivel = true;
-                oMunicao.FabricanteId = municao.FabricanteId;
-                oMunicao.QuantidadeBala = municao.QuantidadeBala;
-                oMunicao.Id = vId;
+                    Municao oMunicao = new Municao();
+                    oMunicao.AlmoxarifadoId = OperadorViewModel.USUARIO.AlmoxarifadoId;
+                    oMunicao.CalibreId = municao.CalibreId;
+                    oMunicao.Descricao = municao.Descricao;
+                    oMunicao.Disponivel = true;
+                    oMunicao.FabricanteId = municao.FabricanteId;
+                    oMunicao.QuantidadeBala = municao.QuantidadeBala;
+                    oMunicao.Lote = vLote;
 
 
 
-                db.Materiais.Add(oMunicao);
-                await db.SaveChangesAsync();
+                    db.Materiais.Add(oMunicao);
+                    await db.SaveChangesAsync();
                 }
 
                 return RedirectToAction("Index");
             }
-            
+
             ViewBag.FabricanteId = new SelectList(db.Fabricantes, "Id", "Descricao", municao.FabricanteId);
             ViewBag.CalibreId = new SelectList(db.Calibres, "Id", "Descricao", municao.CalibreId);
             return View(municao);
@@ -111,6 +121,58 @@ namespace Reserva.Controllers
             return View(municao);
         }
 
+        // GET: Municaos/Add/5
+        public async Task<ActionResult> Add(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Municao municao = db.Municoes.Where(x => x.Id == id).FirstOrDefault();
+            if (municao == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.AlmoxarifadoId = new SelectList(db.Almoxarifadoes, "Id", "Descricao", municao.AlmoxarifadoId);
+            ViewBag.FabricanteId = new SelectList(db.Fabricantes, "Id", "Descricao", municao.FabricanteId);
+            ViewBag.CalibreId = new SelectList(db.Calibres, "Id", "Descricao", municao.CalibreId);
+            return View(municao);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Add([Bind(Include = "Tombo,AlmoxarifadoId,Disponivel,FabricanteId,Id,Descricao,CalibreId,QuantidadeBala")] Municao oMun, FormCollection form)
+        {
+            if (ModelState.IsValid)
+            {
+               
+                 Municao municao = db.Municoes.Where(x => x.Id == oMun.Id).ToList().FirstOrDefault();
+                
+                for (int i = 1; i <= Convert.ToInt32(form["QtdMun"]); i++)
+                {
+
+                    Municao oMunicao = new Municao();
+                    oMunicao.AlmoxarifadoId = OperadorViewModel.USUARIO.AlmoxarifadoId;
+                    oMunicao.CalibreId = municao.CalibreId;
+                    oMunicao.Descricao = municao.Descricao;
+                    oMunicao.Disponivel = true;
+                    oMunicao.FabricanteId = municao.FabricanteId;
+                    oMunicao.QuantidadeBala = municao.QuantidadeBala;
+                    oMunicao.Lote = municao.Lote;
+
+
+
+                    db.Materiais.Add(oMunicao);
+                    await db.SaveChangesAsync();
+                }
+
+                return RedirectToAction("Index");
+            }
+            ViewBag.AlmoxarifadoId = new SelectList(db.Almoxarifadoes, "Id", "Descricao", oMun.AlmoxarifadoId);
+            ViewBag.FabricanteId = new SelectList(db.Fabricantes, "Id", "Descricao", oMun.FabricanteId);
+            ViewBag.CalibreId = new SelectList(db.Calibres, "Id", "Descricao", oMun.CalibreId);
+            return View(oMun);
+        }
+
         // POST: Municaos/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -120,8 +182,19 @@ namespace Reserva.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(municao).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+
+                int vLote = db.Municoes.Where(x => x.Id == municao.Id).ToList().FirstOrDefault().Lote;
+                foreach (Municao oMunicao in db.Municoes.Where(x => x.Lote == vLote).ToList())
+                {
+                    oMunicao.FabricanteId = municao.FabricanteId;
+                    oMunicao.Descricao = municao.Descricao;
+                    oMunicao.CalibreId = municao.CalibreId;
+                    oMunicao.QuantidadeBala = municao.QuantidadeBala;
+
+                    db.Entry(oMunicao).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+                }
+
                 return RedirectToAction("Index");
             }
             ViewBag.AlmoxarifadoId = new SelectList(db.Almoxarifadoes, "Id", "Descricao", municao.AlmoxarifadoId);
@@ -150,9 +223,14 @@ namespace Reserva.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Municao municao = db.Municoes.Where(x => x.Id == id).FirstOrDefault();
-            db.Materiais.Remove(municao);
-            await db.SaveChangesAsync();
+
+            int vLote = db.Municoes.Where(x => x.Id == id).ToList().FirstOrDefault().Lote;
+            foreach (Municao oMunicao in db.Municoes.Where(x => x.Lote == vLote).ToList())
+            {
+                db.Materiais.Remove(oMunicao);
+                await db.SaveChangesAsync();
+            }
+
             return RedirectToAction("Index");
         }
 

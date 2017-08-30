@@ -37,6 +37,7 @@ namespace Reserva.Models
         public virtual DbSet<Armamento> Armamentos { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
         public virtual DbSet<Operador> Operadores { get; set; }
+        public virtual DbSet<Operacao> Operacaos { get; set; }
 
     }
 }

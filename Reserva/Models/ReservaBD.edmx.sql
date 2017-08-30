@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 08/28/2017 15:09:16
+-- Date Created: 08/30/2017 09:55:33
 -- Generated from EDMX file: C:\LabWeb\Reserva\Reserva\Reserva\Models\ReservaBD.edmx
 -- --------------------------------------------------
 
@@ -32,9 +32,6 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_MunicaoArmamento]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Materiais_Armamento] DROP CONSTRAINT [FK_MunicaoArmamento];
 GO
-IF OBJECT_ID(N'[dbo].[FK_MaterialCautela]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Materiais] DROP CONSTRAINT [FK_MaterialCautela];
-GO
 IF OBJECT_ID(N'[dbo].[FK_AlmoxarifadoCautela]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Cautelas] DROP CONSTRAINT [FK_AlmoxarifadoCautela];
 GO
@@ -46,6 +43,12 @@ IF OBJECT_ID(N'[dbo].[FK_OperadorCautela]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_UsuarioCautela]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Cautelas] DROP CONSTRAINT [FK_UsuarioCautela];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CautelaOperacao]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Operacaos] DROP CONSTRAINT [FK_CautelaOperacao];
+GO
+IF OBJECT_ID(N'[dbo].[FK_MaterialOperacao]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Operacaos] DROP CONSTRAINT [FK_MaterialOperacao];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Operador_inherits_Militar]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Militars_Operador] DROP CONSTRAINT [FK_Operador_inherits_Militar];
@@ -87,6 +90,9 @@ IF OBJECT_ID(N'[dbo].[Calibres]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Cautelas]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Cautelas];
+GO
+IF OBJECT_ID(N'[dbo].[Operacaos]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Operacaos];
 GO
 IF OBJECT_ID(N'[dbo].[Militars_Operador]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Militars_Operador];
@@ -140,7 +146,7 @@ CREATE TABLE [dbo].[Materiais] (
     [AlmoxarifadoId] int  NOT NULL,
     [Disponivel] bit  NOT NULL,
     [FabricanteId] int  NOT NULL,
-    [Cautela_Id] int  NOT NULL
+    [Lote] int  NOT NULL
 );
 GO
 
@@ -168,6 +174,15 @@ CREATE TABLE [dbo].[Cautelas] (
     [Operador_Matricula] nvarchar(max)  NOT NULL,
     [Usuario_Id] int  NOT NULL,
     [Usuario_Matricula] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'Operacaos'
+CREATE TABLE [dbo].[Operacaos] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Cautelado] bit  NOT NULL,
+    [CautelaId] int  NOT NULL,
+    [MaterialTombo] int  NOT NULL
 );
 GO
 
@@ -261,6 +276,12 @@ GO
 -- Creating primary key on [Id] in table 'Cautelas'
 ALTER TABLE [dbo].[Cautelas]
 ADD CONSTRAINT [PK_Cautelas]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'Operacaos'
+ALTER TABLE [dbo].[Operacaos]
+ADD CONSTRAINT [PK_Operacaos]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -373,21 +394,6 @@ ON [dbo].[Materiais_Armamento]
     ([MunicaoId]);
 GO
 
--- Creating foreign key on [Cautela_Id] in table 'Materiais'
-ALTER TABLE [dbo].[Materiais]
-ADD CONSTRAINT [FK_MaterialCautela]
-    FOREIGN KEY ([Cautela_Id])
-    REFERENCES [dbo].[Cautelas]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_MaterialCautela'
-CREATE INDEX [IX_FK_MaterialCautela]
-ON [dbo].[Materiais]
-    ([Cautela_Id]);
-GO
-
 -- Creating foreign key on [Almoxarifado_Id] in table 'Cautelas'
 ALTER TABLE [dbo].[Cautelas]
 ADD CONSTRAINT [FK_AlmoxarifadoCautela]
@@ -446,6 +452,36 @@ GO
 CREATE INDEX [IX_FK_UsuarioCautela]
 ON [dbo].[Cautelas]
     ([Usuario_Id], [Usuario_Matricula]);
+GO
+
+-- Creating foreign key on [CautelaId] in table 'Operacaos'
+ALTER TABLE [dbo].[Operacaos]
+ADD CONSTRAINT [FK_CautelaOperacao]
+    FOREIGN KEY ([CautelaId])
+    REFERENCES [dbo].[Cautelas]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CautelaOperacao'
+CREATE INDEX [IX_FK_CautelaOperacao]
+ON [dbo].[Operacaos]
+    ([CautelaId]);
+GO
+
+-- Creating foreign key on [MaterialTombo] in table 'Operacaos'
+ALTER TABLE [dbo].[Operacaos]
+ADD CONSTRAINT [FK_MaterialOperacao]
+    FOREIGN KEY ([MaterialTombo])
+    REFERENCES [dbo].[Materiais]
+        ([Tombo])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_MaterialOperacao'
+CREATE INDEX [IX_FK_MaterialOperacao]
+ON [dbo].[Operacaos]
+    ([MaterialTombo]);
 GO
 
 -- Creating foreign key on [Id], [Matricula] in table 'Militars_Operador'

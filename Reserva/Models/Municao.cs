@@ -24,9 +24,11 @@ namespace Reserva.Models
         public string Descricao { get; set; }
         public int CalibreId { get; set; }
         public int QuantidadeBala { get; set; }
-    
+        public int Estoque { get; set; }
+
         public virtual Calibre Calibre { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Armamento> Armamentos { get; set; }
+
     }
 }

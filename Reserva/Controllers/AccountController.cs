@@ -83,7 +83,7 @@ namespace Reserva.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    if (model.Usuario != "Elioterio")
+                    if (model.Usuario != "ADM")
                     {
                         var vUser = UserManager.FindByName(model.Usuario);
                         Session.Add("OPERADOR", db.Operadores.Where(x => x.AutenticacaoID == vUser.Id).FirstOrDefault());

@@ -4,354 +4,419 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ReservaBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Almoxarifadoes">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Descricao" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Sigla" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Calibres">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Descricao" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Cautelas">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Data" Type="datetime" Nullable="false" />
-          <Property Name="NRegistro" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Almoxarifado_Id" Type="int" Nullable="false" />
-          <Property Name="Operador_Id" Type="int" Nullable="false" />
-          <Property Name="Operador_Matricula" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Usuario_Id" Type="int" Nullable="false" />
-          <Property Name="Usuario_Matricula" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Fabricantes">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Descricao" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Materiais">
-          <Key>
-            <PropertyRef Name="Tombo" />
-          </Key>
-          <Property Name="Tombo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="AlmoxarifadoId" Type="int" Nullable="false" />
-          <Property Name="Disponivel" Type="bit" Nullable="false" />
-          <Property Name="FabricanteId" Type="int" Nullable="false" />
-          <Property Name="Cautela_Id" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Materiais_Acessorio">
-          <Key>
-            <PropertyRef Name="Tombo" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Descricao" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Tombo" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Materiais_Armamento">
-          <Key>
-            <PropertyRef Name="Tombo" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NSerie" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Modelo" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="MunicaoId" Type="int" Nullable="false" />
-          <Property Name="Tombo" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Materiais_Municao">
-          <Key>
-            <PropertyRef Name="Tombo" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Descricao" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="CalibreId" Type="int" Nullable="false" />
-          <Property Name="QuantidadeBala" Type="int" Nullable="false" />
-          <Property Name="Tombo" Type="int" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'ReservaBD.dbo.Militars' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="Militars">
-          <Key>
-            <PropertyRef Name="Id" />
-            
-            
-            <PropertyRef Name="Matricula" />
-            
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="NomeGuerra" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Matricula" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="PatenteId" Type="int" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'ReservaBD.dbo.Militars_Operador' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="Militars_Operador">
-          <Key>
-            
-            
-            
-            
-            
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="Matricula" />
-          </Key>
-          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="AutenticacaoID" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="ADM" Type="bit" Nullable="false" />
-          <Property Name="AlmoxarifadoId" Type="int" Nullable="false" />
-          <Property Name="CautelaId" Type="int" Nullable="false" />
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Matricula" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'ReservaBD.dbo.Militars_Usuario' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="Militars_Usuario">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="Matricula" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Matricula" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Patentes">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Descricao" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Sigla" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_Acessorio_inherits_Material">
-          <End Role="Materiais" Type="Self.Materiais" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Materiais_Acessorio" Type="Self.Materiais_Acessorio" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Materiais">
-              <PropertyRef Name="Tombo" />
-            </Principal>
-            <Dependent Role="Materiais_Acessorio">
-              <PropertyRef Name="Tombo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_AlmoxarifadoCautela">
-          <End Role="Almoxarifadoes" Type="Self.Almoxarifadoes" Multiplicity="1" />
-          <End Role="Cautelas" Type="Self.Cautelas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Almoxarifadoes">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Cautelas">
-              <PropertyRef Name="Almoxarifado_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_AlmoxarifadoMaterial">
-          <End Role="Almoxarifadoes" Type="Self.Almoxarifadoes" Multiplicity="1" />
-          <End Role="Materiais" Type="Self.Materiais" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Almoxarifadoes">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Materiais">
-              <PropertyRef Name="AlmoxarifadoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_AlmoxarifadoOperador">
-          <End Role="Almoxarifadoes" Type="Self.Almoxarifadoes" Multiplicity="1" />
-          <End Role="Militars_Operador" Type="Self.Militars_Operador" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Almoxarifadoes">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Militars_Operador">
-              <PropertyRef Name="AlmoxarifadoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Armamento_inherits_Material">
-          <End Role="Materiais" Type="Self.Materiais" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Materiais_Armamento" Type="Self.Materiais_Armamento" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Materiais">
-              <PropertyRef Name="Tombo" />
-            </Principal>
-            <Dependent Role="Materiais_Armamento">
-              <PropertyRef Name="Tombo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CalibreMunicao">
-          <End Role="Calibres" Type="Self.Calibres" Multiplicity="1" />
-          <End Role="Materiais_Municao" Type="Self.Materiais_Municao" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Calibres">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Materiais_Municao">
-              <PropertyRef Name="CalibreId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_FabricanteMaterial">
-          <End Role="Fabricantes" Type="Self.Fabricantes" Multiplicity="1" />
-          <End Role="Materiais" Type="Self.Materiais" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Fabricantes">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Materiais">
-              <PropertyRef Name="FabricanteId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MaterialCautela">
-          <End Role="Cautelas" Type="Self.Cautelas" Multiplicity="1" />
-          <End Role="Materiais" Type="Self.Materiais" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cautelas">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Materiais">
-              <PropertyRef Name="Cautela_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MilitarPatente">
-          <End Role="Patentes" Type="Self.Patentes" Multiplicity="1" />
-          <End Role="Militars" Type="Self.Militars" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Patentes">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Militars">
-              <PropertyRef Name="PatenteId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Municao_inherits_Material">
-          <End Role="Materiais" Type="Self.Materiais" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Materiais_Municao" Type="Self.Materiais_Municao" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Materiais">
-              <PropertyRef Name="Tombo" />
-            </Principal>
-            <Dependent Role="Materiais_Municao">
-              <PropertyRef Name="Tombo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MunicaoArmamento">
-          <End Role="Materiais_Municao" Type="Self.Materiais_Municao" Multiplicity="1" />
-          <End Role="Materiais_Armamento" Type="Self.Materiais_Armamento" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Materiais_Municao">
-              <PropertyRef Name="Tombo" />
-            </Principal>
-            <Dependent Role="Materiais_Armamento">
-              <PropertyRef Name="MunicaoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="ReservaBDModelStoreContainer">
-          <EntitySet Name="Almoxarifadoes" EntityType="Self.Almoxarifadoes" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Calibres" EntityType="Self.Calibres" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Cautelas" EntityType="Self.Cautelas" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Fabricantes" EntityType="Self.Fabricantes" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Materiais" EntityType="Self.Materiais" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Materiais_Acessorio" EntityType="Self.Materiais_Acessorio" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Materiais_Armamento" EntityType="Self.Materiais_Armamento" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Materiais_Municao" EntityType="Self.Materiais_Municao" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Patentes" EntityType="Self.Patentes" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Militars" EntityType="Self.Militars" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Militars].[Id] AS [Id], 
-    [Militars].[Nome] AS [Nome], 
-    [Militars].[NomeGuerra] AS [NomeGuerra], 
-    [Militars].[Matricula] AS [Matricula], 
-    [Militars].[PatenteId] AS [PatenteId]
-    FROM [dbo].[Militars] AS [Militars]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Militars_Operador" EntityType="Self.Militars_Operador" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Militars_Operador].[Email] AS [Email], 
-    [Militars_Operador].[AutenticacaoID] AS [AutenticacaoID], 
-    [Militars_Operador].[ADM] AS [ADM], 
-    [Militars_Operador].[AlmoxarifadoId] AS [AlmoxarifadoId], 
-    [Militars_Operador].[CautelaId] AS [CautelaId], 
-    [Militars_Operador].[Id] AS [Id], 
-    [Militars_Operador].[Matricula] AS [Matricula]
-    FROM [dbo].[Militars_Operador] AS [Militars_Operador]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Militars_Usuario" EntityType="Self.Militars_Usuario" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Militars_Usuario].[Id] AS [Id], 
-    [Militars_Usuario].[Matricula] AS [Matricula]
-    FROM [dbo].[Militars_Usuario] AS [Militars_Usuario]</DefiningQuery>
-          </EntitySet>
-          <AssociationSet Name="FK_Acessorio_inherits_Material" Association="Self.FK_Acessorio_inherits_Material">
-            <End Role="Materiais" EntitySet="Materiais" />
-            <End Role="Materiais_Acessorio" EntitySet="Materiais_Acessorio" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AlmoxarifadoCautela" Association="Self.FK_AlmoxarifadoCautela">
-            <End Role="Almoxarifadoes" EntitySet="Almoxarifadoes" />
-            <End Role="Cautelas" EntitySet="Cautelas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AlmoxarifadoMaterial" Association="Self.FK_AlmoxarifadoMaterial">
-            <End Role="Almoxarifadoes" EntitySet="Almoxarifadoes" />
-            <End Role="Materiais" EntitySet="Materiais" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AlmoxarifadoOperador" Association="Self.FK_AlmoxarifadoOperador">
-            <End Role="Almoxarifadoes" EntitySet="Almoxarifadoes" />
-            <End Role="Militars_Operador" EntitySet="Militars_Operador" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Armamento_inherits_Material" Association="Self.FK_Armamento_inherits_Material">
-            <End Role="Materiais" EntitySet="Materiais" />
-            <End Role="Materiais_Armamento" EntitySet="Materiais_Armamento" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CalibreMunicao" Association="Self.FK_CalibreMunicao">
-            <End Role="Calibres" EntitySet="Calibres" />
-            <End Role="Materiais_Municao" EntitySet="Materiais_Municao" />
-          </AssociationSet>
-          <AssociationSet Name="FK_FabricanteMaterial" Association="Self.FK_FabricanteMaterial">
-            <End Role="Fabricantes" EntitySet="Fabricantes" />
-            <End Role="Materiais" EntitySet="Materiais" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MaterialCautela" Association="Self.FK_MaterialCautela">
-            <End Role="Cautelas" EntitySet="Cautelas" />
-            <End Role="Materiais" EntitySet="Materiais" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MilitarPatente" Association="Self.FK_MilitarPatente">
-            <End Role="Patentes" EntitySet="Patentes" />
-            <End Role="Militars" EntitySet="Militars" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Municao_inherits_Material" Association="Self.FK_Municao_inherits_Material">
-            <End Role="Materiais" EntitySet="Materiais" />
-            <End Role="Materiais_Municao" EntitySet="Materiais_Municao" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MunicaoArmamento" Association="Self.FK_MunicaoArmamento">
-            <End Role="Materiais_Municao" EntitySet="Materiais_Municao" />
-            <End Role="Materiais_Armamento" EntitySet="Materiais_Armamento" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema></edmx:StorageModels>
+    <Schema Namespace="ReservaBDModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ReservaBDModelStoreContainer">
+    <EntitySet Name="Almoxarifadoes" EntityType="ReservaBDModel.Store.Almoxarifadoes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Militars" EntityType="ReservaBDModel.Store.Militars" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Patentes" EntityType="ReservaBDModel.Store.Patentes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Materiais" EntityType="ReservaBDModel.Store.Materiais" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Fabricantes" EntityType="ReservaBDModel.Store.Fabricantes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Calibres" EntityType="ReservaBDModel.Store.Calibres" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Cautelas" EntityType="ReservaBDModel.Store.Cautelas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Operacaos" EntityType="ReservaBDModel.Store.Operacaos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Militars_Operador" EntityType="ReservaBDModel.Store.Militars_Operador" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Materiais_Municao" EntityType="ReservaBDModel.Store.Materiais_Municao" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Materiais_Armamento" EntityType="ReservaBDModel.Store.Materiais_Armamento" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Militars_Usuario" EntityType="ReservaBDModel.Store.Militars_Usuario" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Materiais_Acessorio" EntityType="ReservaBDModel.Store.Materiais_Acessorio" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="AlmoxarifadoOperador" Association="ReservaBDModel.Store.AlmoxarifadoOperador">
+      <End Role="Almoxarifado" EntitySet="Almoxarifadoes" />
+      <End Role="Operador" EntitySet="Militars_Operador" />
+    </AssociationSet>
+    <AssociationSet Name="MilitarPatente" Association="ReservaBDModel.Store.MilitarPatente">
+      <End Role="Militar" EntitySet="Militars" />
+      <End Role="Patente" EntitySet="Patentes" />
+    </AssociationSet>
+    <AssociationSet Name="AlmoxarifadoMaterial" Association="ReservaBDModel.Store.AlmoxarifadoMaterial">
+      <End Role="Almoxarifado" EntitySet="Almoxarifadoes" />
+      <End Role="Material" EntitySet="Materiais" />
+    </AssociationSet>
+    <AssociationSet Name="CalibreMunicao" Association="ReservaBDModel.Store.CalibreMunicao">
+      <End Role="Municao" EntitySet="Materiais_Municao" />
+      <End Role="Calibre" EntitySet="Calibres" />
+    </AssociationSet>
+    <AssociationSet Name="MunicaoArmamento" Association="ReservaBDModel.Store.MunicaoArmamento">
+      <End Role="Armamento" EntitySet="Materiais_Armamento" />
+      <End Role="Municao" EntitySet="Materiais_Municao" />
+    </AssociationSet>
+    <AssociationSet Name="AlmoxarifadoCautela" Association="ReservaBDModel.Store.AlmoxarifadoCautela">
+      <End Role="Almoxarifado" EntitySet="Almoxarifadoes" />
+      <End Role="Cautela" EntitySet="Cautelas" />
+    </AssociationSet>
+    <AssociationSet Name="FabricanteMaterial" Association="ReservaBDModel.Store.FabricanteMaterial">
+      <End Role="Fabricante" EntitySet="Fabricantes" />
+      <End Role="Material" EntitySet="Materiais" />
+    </AssociationSet>
+    <AssociationSet Name="OperadorCautela" Association="ReservaBDModel.Store.OperadorCautela">
+      <End Role="Operador" EntitySet="Militars_Operador" />
+      <End Role="Cautela" EntitySet="Cautelas" />
+    </AssociationSet>
+    <AssociationSet Name="UsuarioCautela" Association="ReservaBDModel.Store.UsuarioCautela">
+      <End Role="Usuario" EntitySet="Militars_Usuario" />
+      <End Role="Cautela" EntitySet="Cautelas" />
+    </AssociationSet>
+    <AssociationSet Name="CautelaOperacao" Association="ReservaBDModel.Store.CautelaOperacao">
+      <End Role="Cautela" EntitySet="Cautelas" />
+      <End Role="Operacao" EntitySet="Operacaos" />
+    </AssociationSet>
+    <AssociationSet Name="MaterialOperacao" Association="ReservaBDModel.Store.MaterialOperacao">
+      <End Role="Material" EntitySet="Materiais" />
+      <End Role="Operacao" EntitySet="Operacaos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Operador_inherits_Militar" Association="ReservaBDModel.Store.FK_Operador_inherits_Militar">
+      <End Role="Militar" EntitySet="Militars" />
+      <End Role="Operador" EntitySet="Militars_Operador" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Municao_inherits_Material" Association="ReservaBDModel.Store.FK_Municao_inherits_Material">
+      <End Role="Material" EntitySet="Materiais" />
+      <End Role="Municao" EntitySet="Materiais_Municao" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Armamento_inherits_Material" Association="ReservaBDModel.Store.FK_Armamento_inherits_Material">
+      <End Role="Material" EntitySet="Materiais" />
+      <End Role="Armamento" EntitySet="Materiais_Armamento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_inherits_Militar" Association="ReservaBDModel.Store.FK_Usuario_inherits_Militar">
+      <End Role="Militar" EntitySet="Militars" />
+      <End Role="Usuario" EntitySet="Militars_Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Acessorio_inherits_Material" Association="ReservaBDModel.Store.FK_Acessorio_inherits_Material">
+      <End Role="Material" EntitySet="Materiais" />
+      <End Role="Acessorio" EntitySet="Materiais_Acessorio" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Almoxarifadoes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descricao" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Sigla" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Militars">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Matricula" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NomeGuerra" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Matricula" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PatenteId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Patentes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descricao" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Sigla" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Materiais">
+    <Key>
+      <PropertyRef Name="Tombo" />
+    </Key>
+    <Property Name="Tombo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AlmoxarifadoId" Type="int" Nullable="false" />
+    <Property Name="Disponivel" Type="bit" Nullable="false" />
+    <Property Name="FabricanteId" Type="int" Nullable="false" />
+    <Property Name="Lote" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Fabricantes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descricao" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Calibres">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descricao" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cautelas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Data" Type="datetime" Nullable="false" />
+    <Property Name="NRegistro" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Almoxarifado_Id" Type="int" Nullable="false" />
+    <Property Name="Operador_Id" Type="int" Nullable="false" />
+    <Property Name="Operador_Matricula" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Usuario_Id" Type="int" Nullable="false" />
+    <Property Name="Usuario_Matricula" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Operacaos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cautelado" Type="bit" Nullable="false" />
+    <Property Name="CautelaId" Type="int" Nullable="false" />
+    <Property Name="MaterialTombo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Militars_Operador">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Matricula" />
+    </Key>
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AutenticacaoID" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ADM" Type="bit" Nullable="false" />
+    <Property Name="AlmoxarifadoId" Type="int" Nullable="false" />
+    <Property Name="CautelaId" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Matricula" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Materiais_Municao">
+    <Key>
+      <PropertyRef Name="Tombo" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descricao" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CalibreId" Type="int" Nullable="false" />
+    <Property Name="QuantidadeBala" Type="int" Nullable="false" />
+    <Property Name="Tombo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Materiais_Armamento">
+    <Key>
+      <PropertyRef Name="Tombo" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NSerie" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Modelo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MunicaoId" Type="int" Nullable="false" />
+    <Property Name="Tombo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Militars_Usuario">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Matricula" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Matricula" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Materiais_Acessorio">
+    <Key>
+      <PropertyRef Name="Tombo" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descricao" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Tombo" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="AlmoxarifadoOperador">
+    <End Role="Almoxarifado" Type="ReservaBDModel.Store.Almoxarifadoes" Multiplicity="1" />
+    <End Role="Operador" Type="ReservaBDModel.Store.Militars_Operador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Almoxarifado">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Operador">
+        <PropertyRef Name="AlmoxarifadoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MilitarPatente">
+    <End Role="Militar" Type="ReservaBDModel.Store.Militars" Multiplicity="*" />
+    <End Role="Patente" Type="ReservaBDModel.Store.Patentes" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Patente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Militar">
+        <PropertyRef Name="PatenteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AlmoxarifadoMaterial">
+    <End Role="Almoxarifado" Type="ReservaBDModel.Store.Almoxarifadoes" Multiplicity="1" />
+    <End Role="Material" Type="ReservaBDModel.Store.Materiais" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Almoxarifado">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Material">
+        <PropertyRef Name="AlmoxarifadoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CalibreMunicao">
+    <End Role="Municao" Type="ReservaBDModel.Store.Materiais_Municao" Multiplicity="*" />
+    <End Role="Calibre" Type="ReservaBDModel.Store.Calibres" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Calibre">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Municao">
+        <PropertyRef Name="CalibreId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MunicaoArmamento">
+    <End Role="Armamento" Type="ReservaBDModel.Store.Materiais_Armamento" Multiplicity="*" />
+    <End Role="Municao" Type="ReservaBDModel.Store.Materiais_Municao" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Municao">
+        <PropertyRef Name="Tombo" />
+      </Principal>
+      <Dependent Role="Armamento">
+        <PropertyRef Name="MunicaoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AlmoxarifadoCautela">
+    <End Role="Almoxarifado" Type="ReservaBDModel.Store.Almoxarifadoes" Multiplicity="1" />
+    <End Role="Cautela" Type="ReservaBDModel.Store.Cautelas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Almoxarifado">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cautela">
+        <PropertyRef Name="Almoxarifado_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FabricanteMaterial">
+    <End Role="Fabricante" Type="ReservaBDModel.Store.Fabricantes" Multiplicity="1" />
+    <End Role="Material" Type="ReservaBDModel.Store.Materiais" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fabricante">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Material">
+        <PropertyRef Name="FabricanteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OperadorCautela">
+    <End Role="Operador" Type="ReservaBDModel.Store.Militars_Operador" Multiplicity="1" />
+    <End Role="Cautela" Type="ReservaBDModel.Store.Cautelas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operador">
+        <PropertyRef Name="Id" />
+        <PropertyRef Name="Matricula" />
+      </Principal>
+      <Dependent Role="Cautela">
+        <PropertyRef Name="Operador_Id" />
+        <PropertyRef Name="Operador_Matricula" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UsuarioCautela">
+    <End Role="Usuario" Type="ReservaBDModel.Store.Militars_Usuario" Multiplicity="1" />
+    <End Role="Cautela" Type="ReservaBDModel.Store.Cautelas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="Id" />
+        <PropertyRef Name="Matricula" />
+      </Principal>
+      <Dependent Role="Cautela">
+        <PropertyRef Name="Usuario_Id" />
+        <PropertyRef Name="Usuario_Matricula" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CautelaOperacao">
+    <End Role="Cautela" Type="ReservaBDModel.Store.Cautelas" Multiplicity="1" />
+    <End Role="Operacao" Type="ReservaBDModel.Store.Operacaos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cautela">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Operacao">
+        <PropertyRef Name="CautelaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MaterialOperacao">
+    <End Role="Material" Type="ReservaBDModel.Store.Materiais" Multiplicity="1" />
+    <End Role="Operacao" Type="ReservaBDModel.Store.Operacaos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Material">
+        <PropertyRef Name="Tombo" />
+      </Principal>
+      <Dependent Role="Operacao">
+        <PropertyRef Name="MaterialTombo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Operador_inherits_Militar">
+    <End Role="Militar" Type="ReservaBDModel.Store.Militars" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Operador" Type="ReservaBDModel.Store.Militars_Operador" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Militar">
+        <PropertyRef Name="Id" />
+        <PropertyRef Name="Matricula" />
+      </Principal>
+      <Dependent Role="Operador">
+        <PropertyRef Name="Id" />
+        <PropertyRef Name="Matricula" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Municao_inherits_Material">
+    <End Role="Material" Type="ReservaBDModel.Store.Materiais" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Municao" Type="ReservaBDModel.Store.Materiais_Municao" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Material">
+        <PropertyRef Name="Tombo" />
+      </Principal>
+      <Dependent Role="Municao">
+        <PropertyRef Name="Tombo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Armamento_inherits_Material">
+    <End Role="Material" Type="ReservaBDModel.Store.Materiais" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Armamento" Type="ReservaBDModel.Store.Materiais_Armamento" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Material">
+        <PropertyRef Name="Tombo" />
+      </Principal>
+      <Dependent Role="Armamento">
+        <PropertyRef Name="Tombo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_inherits_Militar">
+    <End Role="Militar" Type="ReservaBDModel.Store.Militars" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Usuario" Type="ReservaBDModel.Store.Militars_Usuario" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Militar">
+        <PropertyRef Name="Id" />
+        <PropertyRef Name="Matricula" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="Id" />
+        <PropertyRef Name="Matricula" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Acessorio_inherits_Material">
+    <End Role="Material" Type="ReservaBDModel.Store.Materiais" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Acessorio" Type="ReservaBDModel.Store.Materiais_Acessorio" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Material">
+        <PropertyRef Name="Tombo" />
+      </Principal>
+      <Dependent Role="Acessorio">
+        <PropertyRef Name="Tombo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ReservaBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -383,10 +448,6 @@ warning 6002: The table/view 'ReservaBD.dbo.Militars_Usuario' does not have a pr
             <End Role="Municao" EntitySet="Materiais" />
           </AssociationSet>
           <EntitySet Name="Cautelas" EntityType="ReservaBDModel.Cautela" />
-          <AssociationSet Name="MaterialCautela" Association="ReservaBDModel.MaterialCautela">
-            <End Role="Material" EntitySet="Materiais" />
-            <End Role="Cautela" EntitySet="Cautelas" />
-          </AssociationSet>
           <AssociationSet Name="AlmoxarifadoCautela" Association="ReservaBDModel.AlmoxarifadoCautela">
             <End Role="Almoxarifado" EntitySet="Almoxarifadoes" />
             <End Role="Cautela" EntitySet="Cautelas" />
@@ -402,6 +463,15 @@ warning 6002: The table/view 'ReservaBD.dbo.Militars_Usuario' does not have a pr
           <AssociationSet Name="UsuarioCautela" Association="ReservaBDModel.UsuarioCautela">
             <End Role="Usuario" EntitySet="Militars" />
             <End Role="Cautela" EntitySet="Cautelas" />
+          </AssociationSet>
+          <EntitySet Name="Operacaos" EntityType="ReservaBDModel.Operacao" />
+          <AssociationSet Name="CautelaOperacao" Association="ReservaBDModel.CautelaOperacao">
+            <End Role="Cautela" EntitySet="Cautelas" />
+            <End Role="Operacao" EntitySet="Operacaos" />
+          </AssociationSet>
+          <AssociationSet Name="MaterialOperacao" Association="ReservaBDModel.MaterialOperacao">
+            <End Role="Material" EntitySet="Materiais" />
+            <End Role="Operacao" EntitySet="Operacaos" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Operador" BaseType="ReservaBDModel.Militar">
@@ -479,6 +549,8 @@ warning 6002: The table/view 'ReservaBD.dbo.Militars_Usuario' does not have a pr
           <Property Name="Disponivel" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Fabricante" Relationship="ReservaBDModel.FabricanteMaterial" FromRole="Material" ToRole="Fabricante" />
           <Property Name="FabricanteId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Operacaos" Relationship="ReservaBDModel.MaterialOperacao" FromRole="Material" ToRole="Operacao" />
+          <Property Name="Lote" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Armamento" BaseType="ReservaBDModel.Material">
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
@@ -556,17 +628,13 @@ warning 6002: The table/view 'ReservaBD.dbo.Militars_Usuario' does not have a pr
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Materiais" Relationship="ReservaBDModel.MaterialCautela" FromRole="Cautela" ToRole="Material" />
           <Property Name="Data" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Almoxarifado" Relationship="ReservaBDModel.AlmoxarifadoCautela" FromRole="Cautela" ToRole="Almoxarifado" />
           <Property Name="NRegistro" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Operador" Relationship="ReservaBDModel.OperadorCautela" FromRole="Cautela" ToRole="Operador" />
           <NavigationProperty Name="Usuario" Relationship="ReservaBDModel.UsuarioCautela" FromRole="Cautela" ToRole="Usuario" />
+          <NavigationProperty Name="Operacaos" Relationship="ReservaBDModel.CautelaOperacao" FromRole="Cautela" ToRole="Operacao" />
         </EntityType>
-        <Association Name="MaterialCautela">
-          <End Type="ReservaBDModel.Material" Role="Material" Multiplicity="*" />
-          <End Type="ReservaBDModel.Cautela" Role="Cautela" Multiplicity="0..1" />
-        </Association>
         <Association Name="AlmoxarifadoCautela">
           <End Type="ReservaBDModel.Almoxarifado" Role="Almoxarifado" Multiplicity="1" />
           <End Type="ReservaBDModel.Cautela" Role="Cautela" Multiplicity="*" />
@@ -593,6 +661,41 @@ warning 6002: The table/view 'ReservaBD.dbo.Militars_Usuario' does not have a pr
         <Association Name="UsuarioCautela">
           <End Type="ReservaBDModel.Usuario" Role="Usuario" Multiplicity="1" />
           <End Type="ReservaBDModel.Cautela" Role="Cautela" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Operacao">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cautelado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Cautela" Relationship="ReservaBDModel.CautelaOperacao" FromRole="Operacao" ToRole="Cautela" />
+          <Property Name="CautelaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Material" Relationship="ReservaBDModel.MaterialOperacao" FromRole="Operacao" ToRole="Material" />
+          <Property Name="MaterialTombo" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="CautelaOperacao">
+          <End Type="ReservaBDModel.Cautela" Role="Cautela" Multiplicity="1" />
+          <End Type="ReservaBDModel.Operacao" Role="Operacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cautela">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Operacao">
+              <PropertyRef Name="CautelaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MaterialOperacao">
+          <End Type="ReservaBDModel.Material" Role="Material" Multiplicity="1" />
+          <End Type="ReservaBDModel.Operacao" Role="Operacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="Tombo" />
+            </Principal>
+            <Dependent Role="Operacao">
+              <PropertyRef Name="MaterialTombo" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -653,6 +756,7 @@ warning 6002: The table/view 'ReservaBD.dbo.Militars_Usuario' does not have a pr
           <ScalarProperty Name="AlmoxarifadoId" ColumnName="AlmoxarifadoId" />
           <ScalarProperty Name="Disponivel" ColumnName="Disponivel" />
           <ScalarProperty Name="FabricanteId" ColumnName="FabricanteId" />
+          <ScalarProperty Name="Lote" ColumnName="Lote" />
         </MappingFragment>
       </EntityTypeMapping>
       <EntityTypeMapping TypeName="IsTypeOf(ReservaBDModel.Municao)">
@@ -706,15 +810,16 @@ warning 6002: The table/view 'ReservaBD.dbo.Militars_Usuario' does not have a pr
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="MaterialCautela" TypeName="ReservaBDModel.MaterialCautela" StoreEntitySet="Materiais">
-      <EndProperty Name="Cautela">
-        <ScalarProperty Name="Id" ColumnName="Cautela_Id" />
-      </EndProperty>
-      <EndProperty Name="Material">
-        <ScalarProperty Name="Tombo" ColumnName="Tombo" />
-      </EndProperty>
-            <Condition ColumnName="Cautela_Id" IsNull="false" />
-    </AssociationSetMapping>
+    <EntitySetMapping Name="Operacaos">
+      <EntityTypeMapping TypeName="IsTypeOf(ReservaBDModel.Operacao)">
+        <MappingFragment StoreEntitySet="Operacaos">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Cautelado" ColumnName="Cautelado" />
+          <ScalarProperty Name="CautelaId" ColumnName="CautelaId" />
+          <ScalarProperty Name="MaterialTombo" ColumnName="MaterialTombo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="AlmoxarifadoCautela" TypeName="ReservaBDModel.AlmoxarifadoCautela" StoreEntitySet="Cautelas">
       <EndProperty Name="Almoxarifado">
         <ScalarProperty Name="Id" ColumnName="Almoxarifado_Id" />

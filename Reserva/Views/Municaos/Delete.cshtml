@@ -12,36 +12,13 @@
     <h4>Municao</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Almoxarifado.Descricao)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Almoxarifado.Descricao)
-        </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Fabricante.Descricao)
+            Fabricante
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Fabricante.Descricao)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Disponivel)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Disponivel)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Id)
         </dd>
 
         <dt>
@@ -53,7 +30,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.QuantidadeBala)
+            Quantidade Bala
         </dt>
 
         <dd>
@@ -61,7 +38,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Calibre.Descricao)
+            Calibre
         </dt>
 
         <dd>
@@ -69,13 +46,14 @@
         </dd>
 
     </dl>
-
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
+        <br>
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <button type="button" class="btn btn-adn" onclick='location.href="@Url.Action("Index")"'>Voltar</button>
+            <input type="submit" value="Deletar" class="btn btn-danger" />
         </div>
     }
 </div>

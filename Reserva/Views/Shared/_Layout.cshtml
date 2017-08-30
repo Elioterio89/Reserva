@@ -56,16 +56,16 @@
                         <li>
                             <a href="#"><i class="fa fa-list"></i>Cadastros <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                @if (OperadorViewModel.USUARIO != null && OperadorViewModel.USUARIO.ADM == true)
-                                    {
+                                @*@if (OperadorViewModel.USUARIO != null && OperadorViewModel.USUARIO.ADM == true)
+                                    {*@
                                 <li>
                                     @Html.ActionLink("Reserva", "Index", "Almoxarifadoes")
                                 </li>
 
                                 <li>
-                                    @Html.ActionLink("Usuario", "Index", "Operadors")
+                                    @Html.ActionLink("Operador", "Index", "Operadors")
                                 </li>
-                                }
+                                @*}*@
                                 <li>
                                     @Html.ActionLink("Militar", "Index", "Usuarios")
                                 </li>

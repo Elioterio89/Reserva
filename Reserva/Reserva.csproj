@@ -242,6 +242,9 @@
     <Compile Include="Models\Municao.cs">
       <DependentUpon>ReservaBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Operacao.cs">
+      <DependentUpon>ReservaBD.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Operador.cs">
       <DependentUpon>ReservaBD.tt</DependentUpon>
     </Compile>
@@ -421,6 +424,7 @@
     <Content Include="Views\Armamentoes\Details.cshtml" />
     <Content Include="Views\Armamentoes\Edit.cshtml" />
     <Content Include="Views\Armamentoes\Index.cshtml" />
+    <Content Include="Views\Municaos\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -11,23 +11,15 @@ namespace Reserva.Models
 {
     using System;
     using System.Collections.Generic;
-
-    public partial class Militar
+    
+    public partial class Operacao
     {
         public int Id { get; set; }
-        public string Nome { get; set; }
-        public string NomeGuerra { get; set; }
-        public string Matricula { get; set; }
-        public int PatenteId { get; set; }
-
-        public virtual Patente Patente { get; set; }
-
-        public string NomeDeGuerra
-        {
-            get
-            {
-                return this.Patente.Sigla + " " + this.NomeGuerra;
-            }
-        }
+        public bool Cautelado { get; set; }
+        public int CautelaId { get; set; }
+        public int MaterialTombo { get; set; }
+    
+        public virtual Cautela Cautela { get; set; }
+        public virtual Material Material { get; set; }
     }
 }
