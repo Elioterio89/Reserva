@@ -16,6 +16,5 @@ namespace Reserva.Models
     {
         public int Id { get; set; }
         public string Descricao { get; set; }
-        public int Estoque { get; set; }
     }
 }

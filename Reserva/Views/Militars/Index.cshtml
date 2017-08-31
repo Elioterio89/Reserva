@@ -1,0 +1,76 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<Reserva.Models.Militar>
+
+
+
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Retirar</h2>
+<br>
+
+@using (Html.BeginForm("Index", "Militars", FormMethod.Get))
+{
+
+    <div class="input-group">
+        <span class="form-group input-group-btn">
+            <button type="submit" class="btn bg-color-black" type="button">Buscar</button>
+        </span>
+        @Html.TextBox("SearchString", "", new { @class = "form-control col-md-11" })
+    </div>
+}
+<br>
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover">
+                <tr>
+                    <th>
+                        @Html.ActionLink("Nome", "Index", new { sortOrder = ViewBag.NomeFull })
+                    </th>
+                    <th>
+                        Patente
+                    </th>
+                    <th>
+                        @Html.ActionLink("Nome de Guerra", "Index", new { sortOrder = ViewBag.NomeGuerra })
+                    </th>
+                    <th>
+                        Matricula
+                    </th>
+                    <th style="width: 30px"></th>
+                </tr>
+
+                @foreach (var item in Model)
+            {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Patente.Sigla)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NomeGuerra)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Matricula)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Retirar", new { id=item.Id, sortOrder="arma" })" class="my-link-class "><i class="fa fa-external-link fa-2x" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
+
+            Pagina @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+

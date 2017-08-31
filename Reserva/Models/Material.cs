@@ -12,7 +12,7 @@ namespace Reserva.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Material
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,14 +20,16 @@ namespace Reserva.Models
         {
             this.Operacaos = new HashSet<Operacao>();
         }
-    
         [Key]
         public int Tombo { get; set; }
         public int AlmoxarifadoId { get; set; }
         public bool Disponivel { get; set; }
         public int FabricanteId { get; set; }
         public int Lote { get; set; }
-    
+        public int Estoque { get; set; }
+        public string Natureza { get; set; }
+        public int QtdDisponivel { get; set; } 
+
         public virtual Almoxarifado Almoxarifado { get; set; }
         public virtual Fabricante Fabricante { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

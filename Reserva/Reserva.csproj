@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Reserva</RootNamespace>
     <AssemblyName>Reserva</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -77,8 +78,17 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -86,11 +96,8 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
@@ -132,6 +139,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -205,6 +213,7 @@
     <Compile Include="Controllers\FabricantesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MilitarsController.cs" />
     <Compile Include="Controllers\MunicaosController.cs" />
     <Compile Include="Controllers\OperadorsController.cs" />
     <Compile Include="Controllers\PatentesController.cs" />
@@ -285,6 +294,7 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\invoice.css" />
     <Content Include="Content\materialize.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\prettyPhoto.css" />
     <Content Include="Content\pricing.css" />
     <Content Include="Content\SideBar.css" />
@@ -304,6 +314,7 @@
     <Content Include="js\jquery.metisMenu.js" />
     <Content Include="js\jquery.mixitup.min.js" />
     <Content Include="js\jquery.prettyPhoto.js" />
+    <Content Include="js\Pedido.js" />
     <Content Include="Models\ReservaBD.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ReservaBD.edmx</DependentUpon>
@@ -427,6 +438,11 @@
     <Content Include="Views\Municaos\Add.cshtml" />
     <Content Include="Views\Acessorios\Add.cshtml" />
     <Content Include="Views\Armamentoes\Add.cshtml" />
+    <Content Include="Views\Militars\Create.cshtml" />
+    <Content Include="Views\Militars\Delete.cshtml" />
+    <Content Include="Views\Militars\Details.cshtml" />
+    <Content Include="Views\Militars\Retirar.cshtml" />
+    <Content Include="Views\Militars\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

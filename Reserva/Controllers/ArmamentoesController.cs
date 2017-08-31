@@ -176,7 +176,7 @@ namespace Reserva.Controllers
             }
             ViewBag.AlmoxarifadoId = new SelectList(db.Almoxarifadoes, "Id", "Descricao", armamento.AlmoxarifadoId);
             ViewBag.FabricanteId = new SelectList(db.Fabricantes, "Id", "Descricao", armamento.FabricanteId);
-            ViewBag.MunicaoId = new SelectList(db.Municoes, "Id", "Descricao", armamento.MunicaoId);
+            ViewBag.MunicaoId = new SelectList(db.Municoes.DistinctBy(x=>x.Lote), "Id", "Descricao", armamento.MunicaoId);
             return View(armamento);
         }
 

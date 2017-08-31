@@ -18,8 +18,7 @@ namespace Reserva.Models
         public string NSerie { get; set; }
         public string Modelo { get; set; }
         public int MunicaoId { get; set; }
-        public int Estoque { get; set; }   
-
+    
         public virtual Municao Municao { get; set; }
     }
 }

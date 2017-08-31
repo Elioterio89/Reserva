@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e9801ae3e0be402288c860554e447dd9" Name="Diagram1" ZoomLevel="88" >
+      <Diagram DiagramId="e9801ae3e0be402288c860554e447dd9" Name="Diagram1" ZoomLevel="67" >
         <EntityTypeShape EntityType="ReservaBDModel.Operador" Width="1.5" PointX="1" PointY="3.375" />
         <EntityTypeShape EntityType="ReservaBDModel.Almoxarifado" Width="1.5" PointX="0.5" PointY="7.125" />
         <AssociationConnector Association="ReservaBDModel.AlmoxarifadoOperador" />
@@ -25,11 +25,10 @@
         </InheritanceConnector>
         <EntityTypeShape EntityType="ReservaBDModel.Acessorio" Width="1.5" PointX="11.125" PointY="7" />
         <InheritanceConnector EntityType="ReservaBDModel.Acessorio" ManuallyRouted="true" >
-          <ConnectorPoint PointX="6.375" PointY="9.15907869841294" />
-          <ConnectorPoint PointX="6.75" PointY="8.8968859986037749" />
-          <ConnectorPoint PointX="9.68125" PointY="8.8968859986037749" />
-          <ConnectorPoint PointX="9.68125" PointY="16.197592959181172" />
-          <ConnectorPoint PointX="11.125" PointY="7.8667977813057748" />
+          <ConnectorPoint PointX="6.375" PointY="8.7697671884530255" />
+          <ConnectorPoint PointX="6.75" PointY="8.7697671884530255" />
+          <ConnectorPoint PointX="6.75" PointY="7.8009977885978845" />
+          <ConnectorPoint PointX="11.125" PointY="7.8009977885978845" />
         </InheritanceConnector>
         <EntityTypeShape EntityType="ReservaBDModel.Cautela" Width="1.5" PointX="5.25" PointY="4.375" />
         <AssociationConnector Association="ReservaBDModel.AlmoxarifadoCautela" />
