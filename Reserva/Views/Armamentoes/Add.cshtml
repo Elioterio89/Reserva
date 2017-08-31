@@ -1,4 +1,4 @@
-﻿@model Reserva.Models.Municao
+﻿@model Reserva.Models.Armamento
 
 @{
     ViewBag.Title = "Add";
@@ -14,7 +14,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">Add Munição</h4>
+                <h4 class="modal-title" id="myModalLabel">Add Armamento</h4>
             </div>
             <div class="modal-body">
                 <div class="form-horizontal">
@@ -27,23 +27,30 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-md-2">Descricao</label>
+                        <label class="control-label col-md-2">Nº Serie</label>
                         <div class="col-md-9">
-                            @Html.TextBoxFor(model => model.Descricao, new { @class = "form-control", @readonly = "readonly" })
-                            @Html.ValidationMessageFor(model => model.Descricao)
+                            @Html.TextBoxFor(model => model.NSerie, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(model => model.NSerie)
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-md-2">Calibre</label>
+                        <label class="control-label col-md-2">Modelo</label>
                         <div class="col-md-9">
-                            @Html.TextBoxFor(model => model.Calibre.Descricao, new { @class = "form-control", @readonly = "readonly" })
-                            @Html.ValidationMessageFor(model => model.Calibre.Descricao)
+                            @Html.TextBoxFor(model => model.Modelo, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(model => model.Modelo)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Munição</label>
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(model => model.Municao.Descricao, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(model => model.Municao.Descricao)
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-2">Quantidade</label>
                         <div class="col-md-9">
-                            <input id="QtdMun" name="QtdMun" type="number" class="form-control" tabindex="2" value="0" required>
+                            <input id="QtdArm" name="QtdArm" type="number" class="form-control" tabindex="2" value="0" required>
                         </div>
                     </div>
                 </div>
@@ -56,7 +63,7 @@
                         <button type="button" class="btn btn-adn" data-dismiss="modal">Fechar</button>
                     </div>
                 </div>
-              
+
 
             </div>
         </div>
@@ -66,3 +73,5 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+

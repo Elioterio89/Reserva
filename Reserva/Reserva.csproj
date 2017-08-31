@@ -425,6 +425,8 @@
     <Content Include="Views\Armamentoes\Edit.cshtml" />
     <Content Include="Views\Armamentoes\Index.cshtml" />
     <Content Include="Views\Municaos\Add.cshtml" />
+    <Content Include="Views\Acessorios\Add.cshtml" />
+    <Content Include="Views\Armamentoes\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -103,24 +103,6 @@ namespace Reserva.Controllers
             return View(municao);
         }
 
-        // GET: Municaos/Edit/5
-        public async Task<ActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Municao municao = db.Municoes.Where(x => x.Id == id).FirstOrDefault();
-            if (municao == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.AlmoxarifadoId = new SelectList(db.Almoxarifadoes, "Id", "Descricao", municao.AlmoxarifadoId);
-            ViewBag.FabricanteId = new SelectList(db.Fabricantes, "Id", "Descricao", municao.FabricanteId);
-            ViewBag.CalibreId = new SelectList(db.Calibres, "Id", "Descricao", municao.CalibreId);
-            return View(municao);
-        }
-
         // GET: Municaos/Add/5
         public async Task<ActionResult> Add(int? id)
         {
@@ -171,6 +153,24 @@ namespace Reserva.Controllers
             ViewBag.FabricanteId = new SelectList(db.Fabricantes, "Id", "Descricao", oMun.FabricanteId);
             ViewBag.CalibreId = new SelectList(db.Calibres, "Id", "Descricao", oMun.CalibreId);
             return View(oMun);
+        }
+
+        // GET: Municaos/Edit/5
+        public async Task<ActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Municao municao = db.Municoes.Where(x => x.Id == id).FirstOrDefault();
+            if (municao == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.AlmoxarifadoId = new SelectList(db.Almoxarifadoes, "Id", "Descricao", municao.AlmoxarifadoId);
+            ViewBag.FabricanteId = new SelectList(db.Fabricantes, "Id", "Descricao", municao.FabricanteId);
+            ViewBag.CalibreId = new SelectList(db.Calibres, "Id", "Descricao", municao.CalibreId);
+            return View(municao);
         }
 
         // POST: Municaos/Edit/5
