@@ -1,6 +1,8 @@
 ﻿@using Microsoft.AspNet.Identity
 @using Reserva.Models
 
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,115 +24,119 @@
 
     @if (Request.IsAuthenticated)
     {
-        <div id="wrapper">
-            <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
-                <div class="navbar-header">
-                    @Html.ActionLink("Reserva Armamento", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <div id="wrapper">
+                <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <a href="#" onclick='location.href="@Url.Action("Index", "Home")"' class="brand-logo ">
+                            <img src="~/Imagens/eb.png" alt="">
+                        </a>
+                        @*@Html.ActionLink("Reserva Armamento", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+                    </div>
+                    <div class="header-right">
+                        @Html.Partial("_LoginPartial")
+                    </div>
+                </nav>
+                <nav class="navbar-default navbar-side" role="navigation">
+                    <div class="sidebar-collapse">
+                        <ul class="nav" id="main-menu">
+                            <li>
+                                <a href="#"><i class="fa fa-database"></i>Parametrizações<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        @Html.ActionLink("Calibre ", "Index", "Calibres")
+                                    </li>
+
+                                    <li>
+                                        @Html.ActionLink("Fabricante", "Index", "Fabricantes")
+                                    </li>
+
+                                    <li>
+                                        @Html.ActionLink("Patente", "Index", "Patentes")
+                                    </li>
+
+
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="#"><i class="fa fa-list"></i>Cadastros <span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    @*@if (OperadorViewModel.USUARIO != null && OperadorViewModel.USUARIO.ADM == true)
+                                        {*@
+                                    <li>
+                                        @Html.ActionLink("Reserva", "Index", "Almoxarifadoes")
+                                    </li>
+
+                                    <li>
+                                        @Html.ActionLink("Operador", "Index", "Operadors")
+                                    </li>
+                                    @*}*@
+                                    <li>
+                                        @Html.ActionLink("Militar", "Index", "Usuarios")
+                                    </li>
+
+                                    <li>
+                                        @Html.ActionLink("Armamento ", "Index", "Armamentoes")
+                                    </li>
+
+                                    <li>
+                                        @Html.ActionLink("Acessorio", "Index", "Acessorios")
+                                    </li>
+
+                                    <li>
+                                        @Html.ActionLink("Municao", "Index", "Municaos")
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-retweet"></i>Cautela<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        @Html.ActionLink("Retirar ", "Index", "Militars")
+                                    </li>
+
+                                    <li>
+                                        @Html.ActionLink("Devolver", "Index2", "Militars")
+                                    </li>
+
+                                    <li>
+                                        @Html.ActionLink("Consultar", "Index", "Militars")
+                                    </li>
+
+
+                                </ul>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </nav>
+                <div id="page-wrapper">
+                    <div id="page-inner">
+                        @RenderBody()
+                    </div>
                 </div>
-                <div class="header-right">
-                    @Html.Partial("_LoginPartial")
-                </div>
-            </nav>
-            <nav class="navbar-default navbar-side" role="navigation">
-                <div class="sidebar-collapse">
-                    <ul class="nav" id="main-menu">
-                        <li>
-                            <a href="#"><i class="fa fa-database"></i>Parametrizações<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    @Html.ActionLink("Calibre ", "Index", "Calibres")
-                                </li>
-
-                                <li>
-                                    @Html.ActionLink("Fabricante", "Index", "Fabricantes")
-                                </li>
-
-                                <li>
-                                    @Html.ActionLink("Patente", "Index", "Patentes")
-                                </li>
-
-
-                            </ul>
-                        </li>
-
-                        <li>
-                            <a href="#"><i class="fa fa-list"></i>Cadastros <span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                @*@if (OperadorViewModel.USUARIO != null && OperadorViewModel.USUARIO.ADM == true)
-                                    {*@
-                                <li>
-                                    @Html.ActionLink("Reserva", "Index", "Almoxarifadoes")
-                                </li>
-
-                                <li>
-                                    @Html.ActionLink("Operador", "Index", "Operadors")
-                                </li>
-                                @*}*@
-                                <li>
-                                    @Html.ActionLink("Militar", "Index", "Usuarios")
-                                </li>
-
-                                <li>
-                                    @Html.ActionLink("Armamento ", "Index", "Armamentoes")
-                                </li>
-
-                                <li>
-                                    @Html.ActionLink("Acessorio", "Index", "Acessorios")
-                                </li>
-
-                                <li>
-                                    @Html.ActionLink("Municao", "Index", "Municaos")
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-retweet"></i>Cautela<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    @Html.ActionLink("Retirar ", "Index", "Militars")
-                                </li>
-
-                                <li>
-                                    @Html.ActionLink("Devolver", "Index", "Militars")
-                                </li>
-
-                                <li>
-                                    @Html.ActionLink("Consultar", "Index", "Militars")
-                                </li>
-
-
-                            </ul>
-                        </li>
-
-                    </ul>
-
-                </div>
-
-            </nav>
-            <div id="page-wrapper">
-                <div id="page-inner">
-                    @RenderBody()
-                </div>
-            </div>
-            <footer>
-                <p>&copy; LabWeb-2 2017.1</p>
-            </footer>
-        </div>
-
-
+                <footer>
+                    <p>&copy; LabWeb-2 2017.1</p>
+                </footer>
+            </div>        
     }
     else
-    {            <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
-        <div class="navbar-header">
-            @Html.ActionLink("Reserva Armamento", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    {
+        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <a href="#" onclick='location.href="@Url.Action("Index","Home")"' class="brand-logo ">
+                    <img src="~/Imagens/eb.png" alt="">
+                </a>
+            </div>
+            <div class="header-right">
+                @*@Html.Partial("_LoginPartial")*@
+            </div>
+        </nav>
+        <div class="container body-content">
+            @RenderBody()
         </div>
-        <div class="header-right">
-            @Html.Partial("_LoginPartial")
-        </div>
-    </nav>
-    <div class="container body-content">
-        @RenderBody()
-    </div>
 
     }
 
@@ -144,4 +150,3 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
-

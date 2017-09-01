@@ -8,6 +8,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Reserva.Models;
+using PagedList;
+using Microsoft.Ajax.Utilities;
 
 namespace Reserva.Controllers
 {
@@ -16,9 +18,23 @@ namespace Reserva.Controllers
         private ReservaBDEntities db = new ReservaBDEntities();
 
         // GET: Calibres
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string currentFilter, string searchString, int? page)
         {
-            return View(await db.Calibres.ToListAsync());
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            List<Calibre> lCalibre = db.Calibres.DistinctBy(x => x.Descricao).OrderBy(x => x.Id).ToList();
+
+            int pageSize = 7;
+            int pageNumber = (page ?? 1);
+
+            return View(lCalibre.OrderBy(x=>x.Id).ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Calibres/Details/5

@@ -21,24 +21,27 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+
             </div>
         </div>
 
         <div class="form-group">
             <label class="control-label col-md-2">Nome de Guerra</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.NomeGuerra, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.NomeGuerra, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.NomeGuerra, new { htmlAttributes = new { @class = "form-control" } })
+
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Matricula, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Matricula, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Matricula, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Matricula, new { htmlAttributes = new { @class = "form-control" } })
+
             </div>
         </div>
 
@@ -53,8 +56,15 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Senha Antiga</label>
+            <div class="col-md-10">
+                <input id="PasswordOLD" name="PasswordOLD" type="password" class="form-control" tabindex="2">
             </div>
         </div>
         <div class="form-group">
@@ -90,12 +100,28 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Confirmar" class="btn btn-info" />
+                <button class="btn btn-info" data-toggle="modal" data-target="#ModalEditar">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="ModalEditar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    Editar Operador?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-adn" data-dismiss="modal">Fechar</button>
+                    <input type="submit" value="Confirmar" class="btn btn-info" />
+                </div>
             </div>
         </div>
     </div>
 }
-
 <div>
     <button type="button" class="btn btn-adn" onclick='location.href="@Url.Action("Index")"'>Voltar</button>
 </div>

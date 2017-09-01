@@ -11,12 +11,22 @@ namespace Reserva.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Armamento : Material
     {
         public int Id { get; set; }
+
+        [Required(ErrorMessage = "* Preencha o Campo abaixo!")]
+        [DataType(DataType.Text)]
+        [Display(Name = "Numero de Serie")]
         public string NSerie { get; set; }
+
+        [Required(ErrorMessage = "* Preencha o Campo abaixo!")]
+        [DataType(DataType.Text)]
+        [Display(Name = "Modelo")]
         public string Modelo { get; set; }
+
         public int MunicaoId { get; set; }
     
         public virtual Municao Municao { get; set; }

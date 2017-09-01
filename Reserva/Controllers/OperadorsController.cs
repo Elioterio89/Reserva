@@ -14,6 +14,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 
+
+
 namespace Reserva.Controllers
 {
     public class OperadorsController : Controller
@@ -21,6 +23,15 @@ namespace Reserva.Controllers
         private ReservaBDEntities db = new ReservaBDEntities();
 
         private ApplicationUserManager _userManager;
+
+        public async Task<ActionResult> Info()
+        {
+
+            Operador model = db.Operadores.Where(x => x.Id == OperadorViewModel.USUARIO.Id).FirstOrDefault();
+
+
+            return View(model);
+        }
 
         public ApplicationUserManager UserManager
         {
@@ -131,15 +142,17 @@ namespace Reserva.Controllers
         public async Task<ActionResult> Edit([Bind(Include = "Id,Nome,NomeGuerra,Matricula,PatenteId,Email,AutenticacaoID,ADM,AlmoxarifadoId,CautelaId")] Operador operador, FormCollection form)
         {
 
-            Operador oOperador = await db.Operadores.FindAsync(operador.Id);
+            Operador oOperador =  db.Operadores.Where(x=>x.Id==operador.Id).FirstOrDefault();
             oOperador.Email = operador.Email;
             oOperador.AlmoxarifadoId = operador.AlmoxarifadoId;
             oOperador.ADM = operador.ADM;
             oOperador.Nome = operador.Nome;
+            oOperador.NomeGuerra = operador.NomeGuerra;
+            oOperador.Matricula = operador.Matricula;
 
             if (ModelState.IsValid)
             {
-                if (form["Password"].Length > 0)
+                if (form["PasswordOLD"].Length > 0)
                 {
                     RegisterViewModel oRegistro = new RegisterViewModel();
                     oRegistro.Senha = form["Password"];
@@ -147,16 +160,12 @@ namespace Reserva.Controllers
 
                     var vUser = await UserManager.FindByIdAsync(oOperador.AutenticacaoID);
 
-                    var result = await UserManager.ResetPasswordAsync(vUser.Id, "alteracao", oRegistro.Senha);
-                    if (!result.Succeeded)
-                    {
-                        AddErrors(result);
-                        ViewBag.AlmoxarifadoId = new SelectList(db.Almoxarifadoes, "Id", "Descricao", operador.AlmoxarifadoId);
-                        return View(operador);
-                    }
+
+                    var result = await UserManager.ChangePasswordAsync(oOperador.AutenticacaoID, form["PasswordOLD"], oRegistro.Senha);
+
                 }
 
-                db.Entry(operador).State = EntityState.Modified;
+                db.Entry(oOperador).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }

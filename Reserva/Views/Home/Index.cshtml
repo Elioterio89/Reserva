@@ -1,4 +1,81 @@
-﻿
+﻿@model Reserva.Models.IndexModel
+
+@{
+    ViewBag.Title = "Home";
+}
+
+
+<h2>@Model.Reserva</h2>
+
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover">
+                <tr>
+                    <th>
+                        Material
+                    </th>
+                    <th>
+                        Quantidade
+                    </th>
+                    <th>
+                        Disponivel
+                    </th>
+                    <th>
+                        Não Disponivel
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        Armamento
+                    </td>
+                    <td>
+                        @Model.ArmEstoque
+                    </td>
+                    <th>
+                        @Model.ArmLivre
+                    </th>
+                    <th>
+                        @Model.ArmFora
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        Munição
+                    </td>
+                    <td>
+                        @Model.MunEstoque
+                    </td>
+                    <th>
+                        @Model.MunLivre
+                    </th>
+                    <th>
+                        @Model.MunFora
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        Acessorio
+                    </td>
+                    <td>
+                        @Model.AceEstoque
+                    </td>
+                    <th>
+                        @Model.AceLivre
+                    </th>
+                    <th>
+                        @Model.AceFora
+                    </th>
+                </tr>
+
+
+
+            </table>
+        </div>
+    </div>
+</div>
+
+
 
 
 

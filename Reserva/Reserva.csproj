@@ -241,6 +241,7 @@
       <DependentUpon>ReservaBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\IndexModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Material.cs">
       <DependentUpon>ReservaBD.tt</DependentUpon>
@@ -306,6 +307,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Imagens\bg.jpg" />
     <Content Include="Imagens\EB.jpg" />
+    <Content Include="Imagens\eb.png" />
     <Content Include="js\bootstrap-fileupload.js" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\custom.js" />
@@ -314,7 +316,6 @@
     <Content Include="js\jquery.metisMenu.js" />
     <Content Include="js\jquery.mixitup.min.js" />
     <Content Include="js\jquery.prettyPhoto.js" />
-    <Content Include="js\Pedido.js" />
     <Content Include="Models\ReservaBD.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ReservaBD.edmx</DependentUpon>
@@ -443,6 +444,9 @@
     <Content Include="Views\Militars\Details.cshtml" />
     <Content Include="Views\Militars\Retirar.cshtml" />
     <Content Include="Views\Militars\Index.cshtml" />
+    <Content Include="Views\Militars\Index2.cshtml" />
+    <Content Include="Views\Militars\Devolver.cshtml" />
+    <Content Include="Views\Operadors\Info.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

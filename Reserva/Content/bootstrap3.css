@@ -3236,7 +3236,7 @@ input[type="button"].btn-block {
   position: absolute;
   top: 100%;
   left: 0;
-  z-index: 1000;
+  z-Index: 1000;
   display: none;
   float: left;
   min-width: 160px;
@@ -3328,7 +3328,7 @@ input[type="button"].btn-block {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 990;
+  z-Index: 990;
 }
 
 .pull-right > .dropdown-menu {
@@ -3402,7 +3402,7 @@ input[type="button"].btn-block {
 .btn-group-vertical > .btn:active,
 .btn-group > .btn.active,
 .btn-group-vertical > .btn.active {
-  z-index: 2;
+  z-Index: 2;
 }
 
 .btn-group > .btn:focus,
@@ -3781,7 +3781,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .input-group-btn > .btn:hover,
 .input-group-btn > .btn:active {
-  z-index: 2;
+  z-Index: 2;
 }
 
 .nav {
@@ -4024,7 +4024,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar {
   position: relative;
-  z-index: 1000;
+  z-Index: 1000;
   min-height: 50px;
   margin-bottom: 20px;
   border: 1px solid transparent;
@@ -4183,7 +4183,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar-fixed-top {
   top: 0;
-  z-index: 1030;
+  z-Index: 1030;
 }
 
 .navbar-fixed-bottom {
@@ -4690,7 +4690,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .pagination > .active > span:hover,
 .pagination > .active > a:focus,
 .pagination > .active > span:focus {
-  z-index: 2;
+  z-Index: 2;
   color: #ffffff;
   cursor: default;
   background-color: #428bca;
@@ -5297,7 +5297,7 @@ a.list-group-item:focus {
 .list-group-item.active,
 .list-group-item.active:hover,
 .list-group-item.active:focus {
-  z-index: 2;
+  z-Index: 2;
   color: #ffffff;
   background-color: #428bca;
   border-color: #428bca;
@@ -5616,7 +5616,7 @@ body.modal-open,
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1040;
+  z-Index: 1040;
   display: none;
   overflow: auto;
   overflow-y: scroll;
@@ -5639,7 +5639,7 @@ body.modal-open,
 }
 
 .modal-dialog {
-  z-index: 1050;
+  z-Index: 1050;
   width: auto;
   padding: 10px;
   margin-right: auto;
@@ -5664,7 +5664,7 @@ body.modal-open,
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1030;
+  z-Index: 1030;
   background-color: #000000;
 }
 
@@ -5754,7 +5754,7 @@ body.modal-open,
 
 .tooltip {
   position: absolute;
-  z-index: 1030;
+  z-Index: 1030;
   display: block;
   font-size: 12px;
   line-height: 1.4;
@@ -5870,7 +5870,7 @@ body.modal-open,
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1010;
+  z-Index: 1010;
   display: none;
   max-width: 276px;
   padding: 1px;
@@ -6115,7 +6115,7 @@ body.modal-open,
   position: absolute;
   top: 50%;
   left: 50%;
-  z-index: 5;
+  z-Index: 5;
   display: inline-block;
 }
 
@@ -6140,7 +6140,7 @@ body.modal-open,
   position: absolute;
   bottom: 10px;
   left: 50%;
-  z-index: 15;
+  z-Index: 15;
   width: 60%;
   padding-left: 0;
   margin-left: -30%;
@@ -6171,7 +6171,7 @@ body.modal-open,
   right: 15%;
   bottom: 20px;
   left: 15%;
-  z-index: 10;
+  z-Index: 10;
   padding-top: 20px;
   padding-bottom: 20px;
   color: #ffffff;

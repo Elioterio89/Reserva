@@ -17,9 +17,9 @@ namespace Reserva.Models
         public int Id { get; set; }
         public bool Cautelado { get; set; }
         public int CautelaId { get; set; }
-        public int MaterialTombo { get; set; }
-    
+        public int MaterialTombo { get; set; }    
         public virtual Cautela Cautela { get; set; }
         public virtual Material Material { get; set; }
+        public string DescricaoMaterial { get; set; }
     }
 }

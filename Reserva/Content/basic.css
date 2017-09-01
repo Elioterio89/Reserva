@@ -67,7 +67,7 @@ body {
 .navbar-cls-top .navbar-brand {
     color: #fff;
     background: #202020;
-    width: 260px;
+    width: 197px;
     text-align: center;
     height: 80px;
     font-size: 20px;
@@ -81,7 +81,8 @@ body {
     color: #fff;
     padding: 15px 50px 5px 50px;
     float: right;
-    font-size: 16px;
+    font-size: 20px;
+    height:auto
 }
 
 .navbar-cls-top .navbar-brand:hover {
@@ -194,7 +195,7 @@ body {
 }
 
 .navbar-header {
-    background: #000000;
+    background: #075114;
 }
 
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
@@ -206,7 +207,7 @@ body {
 }
 
     .navbar-default .navbar-toggle .icon-bar {
-        background-color: #FFF;
+        background-color: #006400;
     }
 
 .nav > li > a > i {
@@ -216,7 +217,7 @@ body {
     FOOTER  STYLES    
     =============================================*/
 #footer-sec {
-    background-color:#000;
+    background-color:#075114;
     padding:20px 50px;
     color:#fff;
     font-size:12px;
@@ -235,16 +236,16 @@ body {
 
 @media (min-width:768px) {
     #page-wrapper {
-        margin: 0 0 0 260px;
+        margin: 0 0 0 197px;
         padding: 15px 30px;
         min-height: 1200px;
     }
 
 
     .navbar-side {
-        z-index: 1;
+        z-Index: 1;
         position: absolute;
-        width: 260px;
+        width: 197px;
     }
 
     .navbar {

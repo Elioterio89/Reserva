@@ -11,6 +11,7 @@ namespace Reserva.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Almoxarifado
     {
@@ -23,7 +24,15 @@ namespace Reserva.Models
         }
     
         public int Id { get; set; }
+
+        [Required(ErrorMessage = "* Preencha o Campo abaixo!")]
+        [DataType(DataType.Text)]
+        [Display(Name = "Descricao")]
         public string Descricao { get; set; }
+
+        [Required(ErrorMessage = "* Preencha o Campo abaixo!")]
+        [DataType(DataType.Text)]
+        [Display(Name = "Sigla")]
         public string Sigla { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

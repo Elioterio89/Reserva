@@ -11,13 +11,27 @@ namespace Reserva.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class Militar
     {
         public int Id { get; set; }
+
+        [Required(ErrorMessage = "* Preencha o Campo abaixo!")]
+        [DataType(DataType.Text)]
+        [Display(Name = "Nome")]
         public string Nome { get; set; }
+
+        [Required(ErrorMessage = "* Preencha o Campo abaixo!")]
+        [DataType(DataType.Text)]
+        [Display(Name = "NomeGuerra")]
         public string NomeGuerra { get; set; }
+
+        [Required(ErrorMessage = "* Preencha o Campo abaixo!")]
+        [DataType(DataType.Text)]
+        [Display(Name = "Matricula")]
         public string Matricula { get; set; }
+
         public int PatenteId { get; set; }
 
         public virtual Patente Patente { get; set; }

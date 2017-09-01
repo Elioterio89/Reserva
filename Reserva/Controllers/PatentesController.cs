@@ -8,6 +8,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Reserva.Models;
+using PagedList;
+using Microsoft.Ajax.Utilities;
+
 
 namespace Reserva.Controllers
 {
@@ -16,9 +19,24 @@ namespace Reserva.Controllers
         private ReservaBDEntities db = new ReservaBDEntities();
 
         // GET: Patentes
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string currentFilter, string searchString, int? page)
         {
-            return View(await db.Patentes.ToListAsync());
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            List<Patente> lPatentes= db.Patentes.DistinctBy(x => x.Descricao).OrderBy(x => x.Id).ToList();
+
+            int pageSize = 7;
+            int pageNumber = (page ?? 1);
+
+            return View(lPatentes.OrderBy(x => x.Id).ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Patentes/Details/5

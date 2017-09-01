@@ -1,0 +1,72 @@
+﻿@model Reserva.Models.Operador
+
+
+@{
+    ViewBag.Title = "Info";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Operador</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Nome de Guerra
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeDeGuerra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            Patente
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Patente.Descricao)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Matricula)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Matricula)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            Reserva
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Almoxarifado.Descricao)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ADM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ADM)
+        </dd>
+
+</div>
+

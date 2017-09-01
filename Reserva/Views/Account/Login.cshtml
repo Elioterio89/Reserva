@@ -16,24 +16,25 @@
                         <hr />
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
+                        @Html.ValidationMessageFor(m => m.Usuario, "", new { @class = "text-danger" })
                         <div class="form-group input-group">
                             <span class="input-group-addon"><i class="fa fa-tag"></i></span>
                             @Html.TextBoxFor(m => m.Usuario, new { @class = "form-control", placeholder = "Usuario" })
-                            @Html.ValidationMessageFor(m => m.Usuario, "", new { @class = "text-danger" })
-
                         </div>
+
+                        @Html.ValidationMessageFor(m => m.Senha, "", new { @class = "text-danger" })
                         <div class="form-group input-group">
                             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
                             @Html.PasswordFor(m => m.Senha, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.Senha, "", new { @class = "text-danger" })
+
                         </div>
-                        <div class="form-group">
+                        @*<div class="form-group">
                             <label class="checkbox-inline">
                                 @Html.CheckBoxFor(m => m.RememberMe)
                                 @Html.LabelFor(m => m.RememberMe)
                             </label>
 
-                        </div>
+                        </div>*@
                         <div>
                             <input type="submit" value="Log in" class="btn btn-primary " />
                         </div>

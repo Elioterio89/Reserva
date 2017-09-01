@@ -11,6 +11,7 @@ namespace Reserva.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Municao : Material
     {
@@ -21,8 +22,16 @@ namespace Reserva.Models
         }
     
         public int Id { get; set; }
+
+        [Required(ErrorMessage = "* Preencha o Campo abaixo!")]
+        [DataType(DataType.Text)]
+        [Display(Name = "Descricao")]
         public string Descricao { get; set; }
         public int CalibreId { get; set; }
+
+        [Required(ErrorMessage = "* Preencha o Campo abaixo!")]
+        [DataType(DataType.Text)]
+        [Display(Name = "Quantidade de Balas")]
         public int QuantidadeBala { get; set; }
     
         public virtual Calibre Calibre { get; set; }

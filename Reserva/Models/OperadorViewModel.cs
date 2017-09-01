@@ -14,6 +14,15 @@ namespace Reserva.Models
         {
             get { return (Operador)HttpContext.Current.Session["OPERADOR"]; }
         }
+        public static List<Material> Carrinho
+        {
+            get { return (List<Material>)HttpContext.Current.Session["Carrinho"]; }
+        }
+        public static Militar Militar
+        {
+            get { return (Militar)HttpContext.Current.Session["Militar"]; }
+            set { }
+        }
 
     }
 

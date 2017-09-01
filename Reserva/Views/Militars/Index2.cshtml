@@ -2,16 +2,15 @@
 @model PagedList.IPagedList<Reserva.Models.Militar>
 
 
-
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Index2";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Retirar</h2>
+<h2>Devolver</h2>
 <br>
 
-@using (Html.BeginForm("Index", "Militars", FormMethod.Get))
+@using (Html.BeginForm("Index2", "Militars", FormMethod.Get))
 {
 
     <div class="input-group">
@@ -28,13 +27,13 @@
             <table class="table table-striped table-bordered table-hover">
                 <tr>
                     <th>
-                        @Html.ActionLink("Nome", "Index", new { sortOrder = ViewBag.NomeFull })
+                        @Html.ActionLink("Nome", "Index2", new { sortOrder = ViewBag.NomeFull })
                     </th>
                     <th>
                         Patente
                     </th>
                     <th>
-                        @Html.ActionLink("Nome de Guerra", "Index", new { sortOrder = ViewBag.NomeGuerra })
+                        @Html.ActionLink("Nome de Guerra", "Index2", new { sortOrder = ViewBag.NomeGuerra })
                     </th>
                     <th>
                         Matricula
@@ -58,7 +57,7 @@
                             @Html.DisplayFor(modelItem => item.Matricula)
                         </td>
                         <td>
-                            <a href="@Url.Action("Retirar", new { id=item.Id, sortOrder="arma" })" class="my-link-class "><i class="fa fa-external-link fa-2x" aria-hidden="true"></i></a>
+                            <a href="@Url.Action("Devolver", new { id=item.Id})" class="my-link-class "><i class="fa fa-reply fa-2x" aria-hidden="true"></i></a>
                         </td>
                     </tr>
                 }
@@ -70,5 +69,5 @@
 
             Pagina @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
 
-            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+            @Html.PagedListPager(Model, page => Url.Action("Index2", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 

@@ -29,6 +29,8 @@ namespace Reserva.Models
         public int Estoque { get; set; }
         public string Natureza { get; set; }
         public int QtdDisponivel { get; set; } 
+        public string FabricanteNome { get; set; }
+        public string Nome { get; set; }
 
         public virtual Almoxarifado Almoxarifado { get; set; }
         public virtual Fabricante Fabricante { get; set; }

@@ -11,10 +11,15 @@ namespace Reserva.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Acessorio : Material
     {
         public int Id { get; set; }
+
+        [Required(ErrorMessage = "* Preencha o Campo abaixo!")]
+        [DataType(DataType.Text)]
+        [Display(Name = "Descricao")]
         public string Descricao { get; set; }
     }
 }

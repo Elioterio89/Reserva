@@ -114,8 +114,8 @@ div.facebook .pp_bottom .pp_left{background:url(../img/prettyPhoto/facebook/spri
 div.facebook .pp_bottom .pp_middle{background:url(../img/prettyPhoto/facebook/contentPatternBottom.png) top left repeat-x}
 div.facebook .pp_bottom .pp_right{background:url(../img/prettyPhoto/facebook/sprite.png) -110px -80px no-repeat}
 div.pp_pic_holder a:focus{outline:none}
-div.pp_overlay{background:#000;display:none;left:0;position:absolute;top:0;width:100%;z-index:9500}
-div.pp_pic_holder{display:none;position:absolute;width:100px;z-index:10000}
+div.pp_overlay{background:#000;display:none;left:0;position:absolute;top:0;width:100%;z-Index:9500}
+div.pp_pic_holder{display:none;position:absolute;width:100px;z-Index:10000}
 .pp_content{height:40px;min-width:40px}
 * html .pp_content{width:40px}
 .pp_content_container{position:relative;text-align:left;width:100%}
@@ -130,8 +130,8 @@ div.pp_pic_holder{display:none;position:absolute;width:100px;z-index:10000}
 .pp_nav p{float:left;white-space:nowrap;margin:2px 4px}
 .pp_nav .pp_play,.pp_nav .pp_pause{float:left;margin-right:4px;text-indent:-10000px}
 a.pp_arrow_previous,a.pp_arrow_next{display:block;float:left;height:15px;margin-top:3px;overflow:hidden;text-indent:-10000px;width:14px}
-.pp_hoverContainer{position:absolute;top:0;width:100%;z-index:2000}
-.pp_gallery{display:none;left:50%;margin-top:-50px;position:absolute;z-index:10000}
+.pp_hoverContainer{position:absolute;top:0;width:100%;z-Index:2000}
+.pp_gallery{display:none;left:50%;margin-top:-50px;position:absolute;z-Index:10000}
 .pp_gallery div{float:left;overflow:hidden;position:relative}
 .pp_gallery ul{float:left;height:35px;position:relative;white-space:nowrap;margin:0 0 0 5px;padding:0}
 .pp_gallery ul a{border:1px rgba(0,0,0,0.5) solid;display:block;float:left;height:33px;overflow:hidden}
@@ -141,13 +141,13 @@ a.pp_arrow_previous,a.pp_arrow_next{display:block;float:left;height:15px;margin-
 .pp_gallery .pp_arrow_previous,.pp_gallery .pp_arrow_next{margin-top:7px!important}
 a.pp_next{background:url(../img/prettyPhoto/light_rounded/btnNext.png) 10000px 10000px no-repeat;display:block;float:right;height:100%;text-indent:-10000px;width:49%}
 a.pp_previous{background:url(../img/prettyPhoto/light_rounded/btnNext.png) 10000px 10000px no-repeat;display:block;float:left;height:100%;text-indent:-10000px;width:49%}
-a.pp_expand,a.pp_contract{cursor:pointer;display:none;height:20px;position:absolute;right:30px;text-indent:-10000px;top:10px;width:20px;z-index:20000}
+a.pp_expand,a.pp_contract{cursor:pointer;display:none;height:20px;position:absolute;right:30px;text-indent:-10000px;top:10px;width:20px;z-Index:20000}
 a.pp_close{position:absolute;right:0;top:0;display:block;line-height:22px;text-indent:-10000px}
 .pp_loaderIcon{display:block;height:24px;left:50%;position:absolute;top:50%;width:24px;margin:-12px 0 0 -12px}
 #pp_full_res{line-height:1!important}
 #pp_full_res .pp_inline{text-align:left}
 #pp_full_res .pp_inline p{margin:0 0 15px}
-div.ppt{color:#fff;display:none;font-size:17px;z-index:9999;margin:0 0 5px 15px}
+div.ppt{color:#fff;display:none;font-size:17px;z-Index:9999;margin:0 0 5px 15px}
 div.pp_default .pp_content,div.light_rounded .pp_content{background-color:#fff}
 div.pp_default #pp_full_res .pp_inline,div.light_rounded .pp_content .ppt,div.light_rounded #pp_full_res .pp_inline,div.light_square .pp_content .ppt,div.light_square #pp_full_res .pp_inline,div.facebook .pp_content .ppt,div.facebook #pp_full_res .pp_inline{color:#000}
 div.pp_default .pp_gallery ul li a:hover,div.pp_default .pp_gallery ul li.selected a,.pp_gallery ul a:hover,.pp_gallery li.selected a{border-color:#fff}

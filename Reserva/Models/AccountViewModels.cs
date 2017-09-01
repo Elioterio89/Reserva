@@ -49,12 +49,12 @@ namespace Reserva.Models
     public class LoginViewModel
     {
 
-        [Required]
+        [Required(ErrorMessage = "* Informe o Usuario")]
         [Display(Name = "Usuario")]
         [DataType(DataType.Text)]
         public string Usuario { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "* Informe a Senha")]
         [DataType(DataType.Password)]
         [Display(Name = "Senha")]
         public string Senha { get; set; }
